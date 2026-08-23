@@ -3,7 +3,6 @@
 int main()
 {
     char entrada[100];
-    int controle = 0;
     do
     {
         //lembrar do \n no fgets
