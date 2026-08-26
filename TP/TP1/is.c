@@ -31,7 +31,7 @@ int consoante(int x, char s[])
 int inteiro(int x, char s[])
 {   //retorna se
     return (    //chegou no fim do vetor ou
-                (s[x] == '\n') || 
+                (s[x] == '\n' || s[x] == '\0') || 
                 (
                 //se estiver no intervalo de numeros e nao tiver virgula ou ponto
                 ((s[x] >= 48 && s[x] <= 57) && (s[x] != '.' && s[x] != ','))
@@ -40,14 +40,16 @@ int inteiro(int x, char s[])
                 inteiro(x + 1, s))
             );
 }
-//COMENTAR
+
 int real(int x, int c, char s[])
 {   //retorna se
     return (    //chegou no fim do vetor ou
-                (s[x] == '\n') 
+                (s[x] == '\n' || s[x] == '\0') 
                 || 
+                //se estiver no intervalo de numeros segue pro resto do vetor
                 ( (s[x] >= 48 && s[x] <= 57) && real(x + 1, c, s) )
                 ||
+                //se tiver , ou . aumentar contador e estava em zero (nao ha repeticao de , ou .), segue pro resto
                 ( (s[x] == ',' || s[x] == '.') && c == 0 && real(x + 1, c + 1, s))
             );
 }
