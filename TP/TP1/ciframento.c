@@ -3,7 +3,8 @@
 void ciframento(int x, char s[])
 {
     //caso base, funcao retorna quando cifrou todos os caracteres
-    if(s[x] == '\n'){ return; }
+    //adicionado \0 para casos sem \n
+    if(s[x] == '\n' || s[x] == '\0'){ return; }
     else
     {
         //troca o caractere por ele mais a chave 3
@@ -20,11 +21,9 @@ int main()
     while((fgets(entrada, sizeof(entrada), stdin) != NULL) && 
           (entrada[0] != 'F' || entrada[1] != 'I' || entrada[2] != 'M')) 
     {
-        if(entrada[0] != 'F' && entrada[1] != 'I' && entrada[2] != 'M')
-        {
-            //chamar a funcao para comecar a alterar da primeira posicao
-            ciframento(0, entrada);
-            printf("%s", entrada);
-        }
+        //retirado if que conflitava com caso de teste 
+        //chamar a funcao para comecar a alterar da primeira posicao
+        ciframento(0, entrada);
+        printf("%s", entrada);
     }
 }
