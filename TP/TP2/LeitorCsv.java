@@ -165,60 +165,46 @@ class Data
 
 public class LeitorCsv
 {
-    public static Veiculo[] ler(String arquivo)
+    public static Veiculo[] ler(String arquivo) throws FileNotFoundException
     {
-        //variavel de contagem, fora do try
+        //variavel para contagem
         int c = 0;
-        try
+        //ler o arquivo uma primeira vez para contar quantidade de linhas
+        Scanner leitorContagem = new Scanner(new File(arquivo));
+        //desconsiderar primeira linha (cabecalho)
+        leitorContagem.nextLine(); 
+        //ler enquanto tiver linha
+        while(leitorContagem.hasNextLine())
         {
-            //ler o arquivo uma primeira vez para contar quantidade de linhas
-            Scanner leitorContagem = new Scanner(new File(arquivo));
-            //desconsiderar primeira linha (cabecalho)
             leitorContagem.nextLine(); 
-            //ler enquanto tiver linha
-            while(leitorContagem.hasNextLine())
-            {
-                leitorContagem.nextLine(); 
-                c++; 
-            }
-            //fechar leitor
-            leitorContagem.close();
+            c++; 
         }
-        catch(FileNotFoundException erro) 
-        {
-            System.out.println("Erro: O arquivo não foi encontrado!");
-            //mostrar detalhes do erro
-            erro.printStackTrace(); 
-        }
+        //fechar leitor
+        leitorContagem.close();
+
+        int i = 0;
+        //declarar outro Scanner, reabrindo a leitura do arquivo de seu comeco
+        Scanner leitorVeiculos = new Scanner(new File(arquivo));
         //criar array com quantidade correta de veiculos
         Veiculo[] veiculos = new Veiculo[c];
-        try
+        //desconsiderar primeira linha (cabecalho)
+        leitorVeiculos.nextLine(); 
+        while(leitorVeiculos.hasNext())
         {
-            //declarar outro Scanner, reabrindo a leitura do arquivo de seu comeco
-            Scanner leitorVeiculos = new Scanner(new File(arquivo));
-            //desconsiderar primeira linha (cabecalho)
-            leitorVeiculos.nextLine(); 
-            for(int i = 0; i < c; i++)
-            {
-                //ler linha do arquivo
-                String linha = leitorVeiculos.nextLine();
-                //passar para parseVeiculo colocando em cada posicao do vetor veiculos 
-                veiculos[i] = Veiculo.parseVeiculo(linha);
-            }
-            //fechar leitor
-            leitorVeiculos.close();
+            //ler linha do arquivo
+            String linha = leitorVeiculos.nextLine();
+            //passar para parseVeiculo colocando em cada posicao do vetor veiculos 
+            veiculos[i] = Veiculo.parseVeiculo(linha);
+            i++;
         }
-        catch(FileNotFoundException erro) 
-        {
-            System.out.println("Erro: O arquivo não foi encontrado!");
-            //mostrar detalhes do erro
-            erro.printStackTrace(); 
-        }
+        //fechar leitor
+        leitorVeiculos.close();
+        
         //retornar array
         return veiculos;
-    } 
+    }   
 
-    public static void main(String args[])
+    public static void main(String args[]) throws FileNotFoundException
     {
         //decidir caminho, linux ou windows (teste local)
         String caminho;
