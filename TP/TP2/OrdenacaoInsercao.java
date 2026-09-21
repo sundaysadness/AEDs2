@@ -167,7 +167,7 @@ class Data
     } //end format
 } //end Data
 
-public class LeitorCsv
+class LeitorCsv
 {
     //le o arquivo veiculos.csv e guarda todos os veiculos em um array
     public static Veiculo[] ler(String arquivo) throws FileNotFoundException
@@ -208,6 +208,33 @@ public class LeitorCsv
         //retornar array
         return veiculos;
     }   
+} //end LeitorCsv
+
+public class OrdenacaoInsercao 
+{
+    //metodo para ordenacao
+    static void insercaoMarca(Veiculo[] v, int n)
+    {
+        //i aponta para o elemento a ser inserido
+        for(int i = 1; i < n; i++) 
+        {
+            //temporariamente posicao 1 ate n-1
+			Veiculo tmp = v[i];
+            //foco no anterior
+            int j = i - 1;
+            //comeca pela maior posicao ordenada, decrescendo
+            //compareTo checa se marca de v[j] é maior que marca de tmp (> 0)
+            while( (j >= 0) && ( v[j].getMarca().compareTo(tmp.getMarca()) > 0 ) ) 
+            {
+                //procura onde inserir, delocando elementos maiores
+                v[j + 1] = v[j];
+                //analisa restante de tras
+                j--;
+            }
+            //insercao na posicao correta
+            v[j + 1] = tmp;
+        }
+    } //end insercaoMarca
 
     //recebe o pub.in com os ids e os procura no array de veiculos 
     public static void main(String args[]) throws FileNotFoundException
@@ -228,10 +255,16 @@ public class LeitorCsv
             caminho = "veiculos.csv"; 
         }
         //ler pelo caminho escolhido 
-        Veiculo[] veiculos = ler(caminho);
+        Veiculo[] veiculos = LeitorCsv.ler(caminho);
         
         Scanner sc = new Scanner(System.in);
         int id;
+
+        //array para guardar veiculos selecionados
+        Veiculo[] selecionados = new Veiculo[veiculos.length];
+        //tamanho do array preenchido depois de ler os ids
+        int n = 0 ;
+
         //enquanto nao chegar no final do arquivo com -1
         while((id = sc.nextInt()) != -1)
         {
@@ -244,13 +277,21 @@ public class LeitorCsv
                 //.getId "olha" apenas o id
                 if(veiculos[i].getId() == id)
                 {
-                    //se for o veiculo com o id procurado, mostrar tudo
-                    System.out.println(veiculos[i].format());
+                    //se for o veiculo com o id procurado, guardar em selecionados
+                    selecionados[n] = veiculos[i];
+                    n++;
                     //tornar controle true (achou), nao fazer procura pelo mesmo id desnecessariamente
                     controle = true;
                 }
             }
         }
         sc.close();
+
+        insercaoMarca(selecionados, n);
+
+        for (int i = 0; i < n; i++) 
+        {
+            System.out.println(selecionados[i].format());
+        }
     } //end main
-} //end LeitorCsv
+} //end OrdenacaoInsercao 
