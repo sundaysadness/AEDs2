@@ -210,31 +210,75 @@ class LeitorCsv
     }   
 } //end LeitorCsv
 
-public class OrdenacaoInsercao 
+public class OrdenacaoBucketsort
 {
-    //metodo para ordenacao
-    static void insercaoMarca(Veiculo[] v, int n)
+    //metodo para ordenacao por insercao, apoio para bucketsort
+    static void insercao(Veiculo[] b, int n)
     {
         //i aponta para o elemento a ser inserido
         for(int i = 1; i < n; i++) 
         {
             //temporariamente posicao 1 ate n-1
-			Veiculo tmp = v[i];
+			Veiculo tmp = b[i];
             //foco no anterior
             int j = i - 1;
             //comeca pela maior posicao ordenada, decrescendo
-            //compareTo checa se marca de v[j] é maior que marca de tmp (> 0)
-            while( (j >= 0) && ( v[j].getMarca().compareTo(tmp.getMarca()) > 0 ) ) 
+            while( (j >= 0) && (b[j].getCilindrada() > tmp.getCilindrada()) ) 
             {
                 //procura onde inserir, delocando elementos maiores
-                v[j + 1] = v[j];
+                b[j + 1] = b[j];
                 //analisa restante de tras
                 j--;
             }
             //insercao na posicao correta
-            v[j + 1] = tmp;
+            b[j + 1] = tmp;
         }
-    } //end insercaoMarca
+    } //end insercao
+
+    //metodo para ordenacao por bucketsort
+    static void bucketsort(Veiculo[] v, int n)
+    {
+        //sera usado para contar frequencia de elementos
+        int[] tmpContagem = new int[10];
+        //matriz para guardar frequencia/posicoes e os baldes
+        Veiculo[][] baldes = new Veiculo[10][];
+        //contar quantos veiculos vao em cada balde
+        for(int i = 0; i < n; i++)
+        {
+            double cilindrada = v[i].getCilindrada();
+            int indice = (int)(cilindrada / 8.1 * 10);
+            //quantos veiculos tem cilindrada nessa faixa
+            tmpContagem[indice]++;
+        }
+        //criar cada balde com tamanho exato
+        for(int j = 0; j < 10; j++)
+        {
+            //define a linha da matriz
+            baldes[j] = new Veiculo[tmpContagem[j]];
+        }
+        //preencher os baldes
+        int[] posicaoAtual = new int[10];
+        for(int i = 0; i < n; i++) 
+        {
+            double valorCampo = v[i].getCilindrada();
+            int indice = (int) (valorCampo / 8.1 * 10);
+            //
+            baldes[indice][posicaoAtual[indice]] = v[i];
+            posicaoAtual[indice]++;
+        }
+        //ordernar cada balde chamando um algoritmo de inserctionSort
+        int pos = 0;
+        for(int i = 0; i < 10; i++) 
+        {
+            insercao(baldes[i], baldes[i].length); 
+            //devolver por array v
+            for(int j = 0; j < baldes[i].length; j++) 
+            {
+                v[pos] = baldes[i][j];
+                pos++;
+            }
+        }
+    } //end bucketsort
 
     //recebe o pub.in com os ids e os procura no array de veiculos 
     public static void main(String args[]) throws FileNotFoundException
@@ -287,7 +331,7 @@ public class OrdenacaoInsercao
         }
         sc.close();
 
-        insercaoMarca(selecionados, n);
+        bucketsort(selecionados, n);
 
         for(int i = 0; i < n; i++) 
         {
