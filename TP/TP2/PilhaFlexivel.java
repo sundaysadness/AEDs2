@@ -49,7 +49,7 @@ class Celula
     //construtor
     Celula(Veiculo v)
     {
-        veiculo = null;
+        veiculo = v;
         prox = null;
     } //end construtor
 } //end Celula
