@@ -1,0 +1,8 @@
+Tarefa	                    C	                                Java
+Igualdade de strings	    strcmp(a, b) == 0	                a.equals(b)
+Tamanho	                    strlen(s)	                        s.length()
+Dividir	                    strtok(s, ",")	                    s.split(",")
+Buscar substring	        strstr(s, sub) (ponteiro/NULL)	    s.indexOf(sub) (índice/-1)
+Texto para inteiro	        atoi / strtol / sscanf	            Integer.parseInt
+Copiar	                    strcpy / strncpy	                atribuição (b = a, imutável)
+Concatenar	                strcat	                            + ou StringBuilder
