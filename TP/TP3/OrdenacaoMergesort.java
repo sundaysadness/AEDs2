@@ -247,7 +247,8 @@ public class OrdenacaoMergesort
                 {
                     tmp = a.getCategoria().compareTo(b.getCategoria());
                 }
-                resp = (tmp < 0);
+                //arrumando estabilidade, preserva a ordem original em caso de outro empate
+                resp = (tmp <= 0);
             }
         }
         return resp;
