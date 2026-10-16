@@ -204,26 +204,45 @@ void swap(Veiculo* a, Veiculo* b)
 } //end swap
 
 //funcao para comparar consumoEstrada de array com de pivo e, em caso de empate, desempatar por marca
-int compare(Veiculo array, Veiculo pivo)
+int compare(Veiculo a, Veiculo p)
 {
     int result;
     //se nao houver empate
-    if(array.consumoEstrada != pivo.consumoEstrada)
+    if(a.consumoEstrada != p.consumoEstrada)
     {
-        result = array.consumoEstrada < pivo.consumoEstrada;
+        result = a.consumoEstrada < p.consumoEstrada;
     }
     else
     {
-        result = strcmp(array.marca, pivo.marca) < 0;
+        result = strcmp(a.marca, p.marca) < 0;
     }
     return result;
 } //end menor
+
+//funcao mediana dos tres (primeiro, meio e ultimo)
+int mediana(Veiculo *array, int dir, int esq)
+{
+    int result;
+    int meio = esq + (dir - esq) / 2;
+
+    Veiculo a = array[esq];
+    Veiculo b = array[meio];
+    Veiculo c = array[dir];
+
+    //x >= y  equivale a  !compare(x, y)
+    //x <= y  equivale a  !compare(y, x)
+    if( (!compare(a, b) && !compare(c, a)) || (!compare(a, c) && !compare(b, a)) ) result = esq;
+    else if( (!compare(b, a) && !compare(c, b)) || (!compare(b, c) && !compare(a, b)) ) result = meio;
+    else result = dir;
+
+    return result;
+} //end mediana
 
 //ordenacao por Quicksort
 void quicksortRec(Veiculo *array, int esq, int dir) 
 {
     int i = esq, j = dir;
-    Veiculo pivo = array[(dir+esq)/2];
+    Veiculo pivo = array[mediana(array, dir, esq)];
     while(i <= j) 
     {
         while(compare(array[i], pivo)) i++;
