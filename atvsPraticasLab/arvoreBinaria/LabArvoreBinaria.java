@@ -115,18 +115,27 @@ class ArvoreBinaria
 
     public void altura()
     {
-        altura(raiz);
+        int h = altura(raiz);
+        System.out.println(h);
     }
 
-    public void altura(No i)
+    public int altura(No i)
     {
-        int h = 0;
-        while(i != null)
-        { 
-            h++; 
-            i = i.esq;
+        if(i == null) 
+        {
+            return -1;
         }
-        System.out.println(h);
+
+        int altEsq = altura(i.esq);
+        int altDir = altura(i.dir);
+
+        if(altEsq > altDir) 
+        {
+            return altEsq + 1;
+        } else 
+        {
+            return altDir + 1;
+        }
     }
 
     public void descendentes(int x)
