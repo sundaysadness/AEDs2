@@ -8,12 +8,13 @@
 /*
  * Variavel global
  */
-No* raiz;
+No *raiz;
 
 /**
  * Criar arvore binaria.
  */
-void start() {
+void start()
+{
    raiz = NULL;
 }
 
@@ -23,7 +24,8 @@ void start() {
  * @return <code>true</code> se o elemento existir,
  * <code>false</code> em caso contrario.
  */
-bool pesquisar(int x) {
+bool pesquisar(int x)
+{
    return pesquisarRec(x, raiz);
 }
 
@@ -34,18 +36,23 @@ bool pesquisar(int x) {
  * @return <code>true</code> se o elemento existir,
  * <code>false</code> em caso contrario.
  */
-bool pesquisarRec(int x, No* i) {
+bool pesquisarRec(int x, No *i)
+{
    bool resp;
-   if (i == NULL) {
+   if (i == NULL)
+   {
       resp = false;
-
-   } else if (x == i->elemento) {
+   }
+   else if (x == i->elemento)
+   {
       resp = true;
-
-   } else if (x < i->elemento) {
+   }
+   else if (x < i->elemento)
+   {
       resp = pesquisarRec(x, i->esq);
-
-   } else {
+   }
+   else
+   {
       resp = pesquisarRec(x, i->dir);
    }
    return resp;
@@ -54,7 +61,8 @@ bool pesquisarRec(int x, No* i) {
 /**
  * Metodo publico iterativo para exibir elementos.
  */
-void caminharCentral() {
+void caminharCentral()
+{
    printf("[ ");
    caminharCentralRec(raiz);
    printf("]\n");
@@ -64,8 +72,10 @@ void caminharCentral() {
  * Metodo privado recursivo para exibir elementos.
  * @param i No em analise.
  */
-void caminharCentralRec(No* i) {
-   if (i != NULL) {
+void caminharCentralRec(No *i)
+{
+   if (i != NULL)
+   {
       caminharCentralRec(i->esq);
       printf("%d ", i->elemento);
       caminharCentralRec(i->dir);
@@ -75,7 +85,8 @@ void caminharCentralRec(No* i) {
 /**
  * Metodo publico iterativo para exibir elementos.
  */
-void caminharPre() {
+void caminharPre()
+{
    printf("[ ");
    caminharPreRec(raiz);
    printf("]\n");
@@ -85,8 +96,10 @@ void caminharPre() {
  * Metodo privado recursivo para exibir elementos.
  * @param i No em analise.
  */
-void caminharPreRec(No* i) {
-   if (i != NULL) {
+void caminharPreRec(No *i)
+{
+   if (i != NULL)
+   {
       printf("%d ", i->elemento);
       caminharPreRec(i->esq);
       caminharPreRec(i->dir);
@@ -96,7 +109,8 @@ void caminharPreRec(No* i) {
 /**
  * Metodo publico iterativo para exibir elementos.
  */
-void caminharPos() {
+void caminharPos()
+{
    printf("[ ");
    caminharPosRec(raiz);
    printf("]\n");
@@ -106,8 +120,10 @@ void caminharPos() {
  * Metodo privado recursivo para exibir elementos.
  * @param i No em analise.
  */
-void caminharPosRec(No* i) {
-   if (i != NULL) {
+void caminharPosRec(No *i)
+{
+   if (i != NULL)
+   {
       caminharPosRec(i->esq);
       caminharPosRec(i->dir);
       printf("%d ", i->elemento);
@@ -118,7 +134,8 @@ void caminharPosRec(No* i) {
  * Metodo publico iterativo para inserir elemento.
  * @param x Elemento a ser inserido.
  */
-void inserir(int x) {
+void inserir(int x)
+{
    inserirRec(x, &raiz);
 }
 
@@ -127,17 +144,22 @@ void inserir(int x) {
  * @param x Elemento a ser inserido.
  * @param i No** endereco do ponteiro No
  */
-void inserirRec(int x, No** i) {
-   if (*i == NULL) {
+void inserirRec(int x, No **i)
+{
+   if (*i == NULL)
+   {
       *i = novoNo(x);
-
-   } else if (x < (*i)->elemento) {
+   }
+   else if (x < (*i)->elemento)
+   {
       inserirRec(x, &((*i)->esq));
-
-   } else if (x > (*i)->elemento) {
+   }
+   else if (x > (*i)->elemento)
+   {
       inserirRec(x, &((*i)->dir));
-
-   } else {
+   }
+   else
+   {
       errx(1, "Erro ao inserir!");
    }
 }
@@ -146,7 +168,8 @@ void inserirRec(int x, No** i) {
  * Metodo publico iterativo para remover elemento.
  * @param x Elemento a ser removido.
  */
-void remover(int x) {
+void remover(int x)
+{
    removerRec(x, &raiz);
 }
 
@@ -155,27 +178,34 @@ void remover(int x) {
  * @param x Elemento a ser removido.
  * @param i No** endereco do ponteiro No
  */
-void removerRec(int x, No** i) {
-   if (*i == NULL) {
+void removerRec(int x, No **i)
+{
+   if (*i == NULL)
+   {
       errx(1, "Erro ao remover!");
-
-   } else if (x < (*i)->elemento) {
+   }
+   else if (x < (*i)->elemento)
+   {
       removerRec(x, &((*i)->esq));
-
-   } else if (x > (*i)->elemento) {
+   }
+   else if (x > (*i)->elemento)
+   {
       removerRec(x, &((*i)->dir));
-
-   } else if ((*i)->dir == NULL) {
-      No* del = *i;
+   }
+   else if ((*i)->dir == NULL)
+   {
+      No *del = *i;
       *i = (*i)->esq;
       free(del);
-
-   } else if ((*i)->esq == NULL) {
-      No* del = *i;
+   }
+   else if ((*i)->esq == NULL)
+   {
+      No *del = *i;
       *i = (*i)->dir;
       free(del);
-
-   } else {
+   }
+   else
+   {
       maiorEsq(i, &((*i)->esq));
    }
 }
@@ -185,71 +215,75 @@ void removerRec(int x, No** i) {
  * @param i No** endereco do ponteiro No que contem o elemento removido.
  * @param j No** endereco do ponteiro No da subarvore esquerda.
  */
-void maiorEsq(No** i, No** j) {
-   if ((*j)->dir != NULL) {
+void maiorEsq(No **i, No **j)
+{
+   if ((*j)->dir != NULL)
+   {
       maiorEsq(i, &((*j)->dir));
-
-   } else {
-      No* del = *j;
+   }
+   else
+   {
+      No *del = *j;
       (*i)->elemento = (*j)->elemento;
       (*j) = (*j)->esq;
       free(del);
    }
 }
 
-//funções do aulão
+// --------------------- funções do aulão
 
-void removerFolhas(No** i) 
+void removerFolhas(No **i)
 {
-    if(*i != NULL) 
-    {
-        if((*i)->esq == NULL && (*i)->dir == NULL) 
-        {
-            free(*i);
-            *i = NULL;
-        } 
-        else 
-        {
-            removerFolhas(&(*i)->esq);
-            removerFolhas(&(*i)->dir);
-        }
-    }
+   if (*i != NULL)
+   {
+      if ((*i)->esq == NULL && (*i)->dir == NULL)
+      {
+         free(*i);
+         *i = NULL;
+      }
+      else
+      {
+         removerFolhas(&(*i)->esq);
+         removerFolhas(&(*i)->dir);
+      }
+   }
 }
 
-void espelhar(No* i) 
+void espelhar(No *i)
 {
-    if(i != NULL) 
-    {
-        No* tmp = i->esq;
+   if (i != NULL)
+   {
+      No *tmp = i->esq;
 
-        i->esq = i->dir;
-        i->dir = tmp;
+      i->esq = i->dir;
+      i->dir = tmp;
 
-        espelhar(i->esq);
-        espelhar(i->dir);
-    }
+      espelhar(i->esq);
+      espelhar(i->dir);
+   }
 }
 
-bool simetricas(No* a, No* b) 
+bool simetricas(No *a, No *b)
 {
-    bool resp;
-    //se as duas forem nulas, sao simetricas
-    if(a == NULL && b == NULL) 
-    {
-        resp = true;
-    } else if(a == NULL || b == NULL) 
-    {
-        resp = false;
-    } else if(a->elemento != b->elemento) 
-    {
-        resp = false;
-    } else 
-    {
-        resp = simetricas(a->esq, b->dir) &&
-        simetricas(a->dir, b->esq);
-    }
+   bool resp;
+   // se as duas forem nulas, sao simetricas
+   if (a == NULL && b == NULL)
+   {
+      resp = true;
+   }
+   else if (a == NULL || b == NULL)
+   {
+      resp = false;
+   }
+   else if (a->elemento != b->elemento)
+   {
+      resp = false;
+   }
+   else
+   {
+      resp = simetricas(a->esq, b->dir) &&
+             simetricas(a->dir, b->esq);
+   }
 
-    return resp;
+   return resp;
 }
-
-

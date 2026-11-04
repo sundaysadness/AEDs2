@@ -146,12 +146,72 @@ class ArvoreBinaria
         else{ return altDir + 1; }
     }
 
-    public void descendentes(int x)
+    private No buscarNo(int x, No i)
     {
-
+        if(i == null || i.elemento == x){ return i; }
+        if(x < i.elemento){ return buscarNo(x, i.esq); }
+        return buscarNo(x, i.dir);
     }
 
-     public void mostrarFolhas()
+    public void descendentes(int x)
+    {
+        No i = buscarNo(x, raiz);
+        if(i == null)
+        {
+            System.out.println("Elemento não encontrado!");
+        }
+        else
+        {
+            System.out.print("Descendentes de " + x + ": ");
+            caminharPre(i.esq);
+            caminharPre(i.dir);
+            System.out.println();
+        }
+    }
+
+    public void ancestrais(int x)
+    {
+        if(!pesquisar(x))
+        {
+            System.out.println("Elemento não encontrado!");
+        }
+        else
+        {
+            System.out.print("Ancestrais de " + x + ": ");
+            ancestrais(raiz, x);
+            System.out.println();
+        }
+    }
+
+    private boolean ancestrais(No i, int x)
+    {
+        if(i == null || i.elemento == x)
+        {
+            return i != null && i.elemento == x;
+        }
+
+        // Se o elemento está na subárvore esquerda ou direita, 
+        // o nó atual 'i' faz parte dos ancestrais.
+        if(x < i.elemento)
+        {
+            if(ancestrais(i.esq, x))
+            {
+                System.out.print(i.elemento + " ");
+                return true;
+            }
+        }
+        else
+        {
+            if(ancestrais(i.dir, x))
+            {
+                System.out.print(i.elemento + " ");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void mostrarFolhas()
     {
         mostrarFolhas(raiz);
     }
