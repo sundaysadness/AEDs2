@@ -242,11 +242,11 @@ class ArvoreBinaria
     }
 
     //funcao de apoio para comparar
-    private int compare(Veiculo a, Veiculo b)
+    private boolean compare(Veiculo a, Veiculo b)
     {
-        int resp;
-        if(a.getModelo().compareTo(b.getModelo()) < 0){ resp = 1; }
-        else{ resp = 0; }
+        boolean resp;
+        if(a.getModelo().compareTo(b.getModelo()) < 0){ resp = true; }
+        else{ resp = false; }
         return resp;
     } //end compare
 
@@ -261,9 +261,9 @@ class ArvoreBinaria
         //se a arvore estiver vazia
         if(i == null){ i = new No(x); }
         //elemento a ser inserido é menor que raiz
-        else if(x < i.elemento){ i.esq = inserir(x, i.esq); }
+        else if(compare(x, i.elemento)){ i.esq = inserir(x, i.esq); }
         //elemento a ser inserido é maior que raiz
-        else if(x > i.elemento){ i.dir = inserir(x, i.dir); }
+        else if(compare(i.elemento, x)){ i.dir = inserir(x, i.dir); }
         else{ System.out.println("Elemento repetido!"); }
         return i;
     } //end inserir
@@ -281,7 +281,7 @@ class ArvoreBinaria
         if(i == null){ resp = false; }
         else if(i.elemento == x){ resp = true; }
         else if(compare(x, i.elemento)){ pesquisarRec(x, i.esq); }
-        else if(x > i.elemento){ pesquisarRec(x, i.dir); }
+        else if(compare(i.elemento, x)){ pesquisarRec(x, i.dir); }
         return resp;
     } //end pesquisarRec
 
@@ -291,7 +291,7 @@ class ArvoreBinaria
         No i = raiz;
         while(i != null && i.elemento != x)
         {
-            if(x < i.elemento){ i = i.esq; }
+            if(compare(x, i.elemento)){ i = i.esq; }
             else{ i = i.dir; }
         }
         return (i != null);
