@@ -242,10 +242,10 @@ class ArvoreBinaria
     }
 
     //funcao de apoio para comparar
-    private boolean compare(Veiculo a, Veiculo b)
+    private boolean compare(String a, String b)
     {
         boolean resp;
-        if(a.getModelo().compareTo(b.getModelo()) < 0){ resp = true; }
+        if(a.compareTo(b) < 0){ resp = true; } 
         else{ resp = false; }
         return resp;
     } //end compare
@@ -261,75 +261,43 @@ class ArvoreBinaria
         //se a arvore estiver vazia
         if(i == null){ i = new No(x); }
         //elemento a ser inserido é menor que raiz
-        else if(compare(x, i.elemento)){ i.esq = inserir(x, i.esq); }
+        else if(compare(x.getModelo(), i.elemento.getModelo())){ i.esq = inserir(x, i.esq); }
         //elemento a ser inserido é maior que raiz
-        else if(compare(i.elemento, x)){ i.dir = inserir(x, i.dir); }
-        else{ System.out.println("Elemento repetido!"); }
+        else if(compare(i.elemento.getModelo(), x.getModelo())){ i.dir = inserir(x, i.dir); }
+        else{ //nao fazer nada
+             }
         return i;
     } //end inserir
 
     //pesquisar retorna verdadeiro ou falso
     //pesquisar recursivo
-    public boolean pesquisarRec(Veiculo x)
+    public boolean pesquisarRec(String x)
     {
         return pesquisarRec(x, raiz); 
     } //end pesquisarRec
 
-    public boolean pesquisarRec(Veiculo x, No i)
+    public boolean pesquisarRec(String x, No i)
     {
         boolean resp = false;
         if(i == null){ resp = false; }
-        else if(i.elemento == x){ resp = true; }
-        else if(compare(x, i.elemento)){ pesquisarRec(x, i.esq); }
-        else if(compare(i.elemento, x)){ pesquisarRec(x, i.dir); }
+        else if(i.elemento.getModelo().equals(x)){ resp = true; }
+        else if(compare(x, i.elemento.getModelo())){ System.out.print("esq" + " "); resp = pesquisarRec(x, i.esq); }
+        else if(compare(i.elemento.getModelo(), x)){ System.out.print("dir" + " "); resp = pesquisarRec(x, i.dir); }
         return resp;
     } //end pesquisarRec
 
     //pesquisar iterativo
-    public boolean pesquisar(Veiculo x)
+    /*
+    public boolean pesquisar(String x)
     {
         No i = raiz;
-        while(i != null && i.elemento != x)
+        while(i != null && x.equals(i.elemento.getModelo()))
         {
-            if(compare(x, i.elemento)){ i = i.esq; }
+            if(compare(x, i.elemento.getModelo())){ i = i.esq; }
             else{ i = i.dir; }
         }
         return (i != null);
-    } //end pesquisar iterativo 
-
-    public void caminharPre()
-    {
-        //se arvore estiver vazia
-        if(raiz == null){ System.out.println("Arvore vazia!"); }
-        else{ caminharPre(raiz); }
-    } //end caminharPre
-
-    public void caminharPre(No i)
-    {
-        if(i != null)
-        {
-            System.out.print(i.elemento + " ");
-            caminharPre(i.esq);
-            caminharPre(i.dir);
-        }
-    } //end caminharPre
-
-    public void caminharPos()
-    {
-        //se arvore estiver vazia
-        if(raiz == null){ System.out.println("Arvore vazia!"); }
-        else{ caminharPos(raiz); }
-    } //end caminharPos
-
-    public void caminharPos(No i)
-    {
-        if(i != null)
-        {
-            caminharPos(i.esq);
-            caminharPos(i.dir);
-            System.out.print(i.elemento + " ");
-        }
-    } //end caminharPos
+    } //end pesquisar iterativo */
 
     public void caminharEn()
     {
@@ -343,30 +311,10 @@ class ArvoreBinaria
         if(i != null)
         {
             caminharEn(i.esq);
-            System.out.print(i.elemento + " ");
+            System.out.println(i.elemento.format());
             caminharEn(i.dir);
         }
     } //end caminharEn
-
-    public void altura()
-    {
-        int h = altura(raiz);
-        System.out.println(h);
-    } //end altura
-
-    //retorna a altura inteira
-    public int altura(No i)
-    {
-        //caso base (parada)
-        if(i == null){ return -1; }
-
-        int altEsq = altura(i.esq);
-        int altDir = altura(i.dir);
-
-        if(altEsq > altDir){ return altEsq + 1; }
-        else{ return altDir + 1; }
-    } //end altura
-
 
     public static void main(String args[]) throws FileNotFoundException
     {
@@ -394,9 +342,6 @@ class ArvoreBinaria
         //arvore para guardar veiculos selecionados
         ArvoreBinaria arvore = new ArvoreBinaria();
 
-        //tamanho do array preenchido depois de ler os ids
-        //int n = 0 ;
-
         //enquanto nao chegar no final do arquivo com -1 inserir os elementos na árvore
         while((id = sc.nextInt()) != -1)
         {
@@ -410,19 +355,29 @@ class ArvoreBinaria
                 if(veiculos[i].getId() == id)
                 {
                     //se for o veiculo com o id procurado, inserir na arvore
-                    inserir(veiculos[i]);
-                    n++;
+                    arvore.inserir(veiculos[i]);
                     //tornar controle true (achou), nao fazer procura pelo mesmo id desnecessariamente
                     controle = true;
                 }
             }
         }
-        sc.close();
+        
+        //limpar buffer
+        sc.nextLine();
+
+        String entrada;
 
         //pesquisar elementos na arvore
+        while(!((entrada = sc.nextLine()).equals("FIM")))
+        {
+            System.out.print("raiz" + " ");
+            if(arvore.pesquisarRec(entrada)){ System.out.println("SIM"); }
+            else{ System.out.println("NAO"); }
+        }
 
         //imprimir arvore com caminhamento em ordem
+        arvore.caminharEn();
 
-
+        sc.close();
     } //end main
 }
