@@ -1,83 +1,83 @@
-raiz esq dir dir esq esq dir NAO
-raiz dir esq dir dir esq esq NAO
-raiz dir dir esq dir esq esq dir dir NAO
-raiz dir dir esq dir dir esq dir dir NAO
-raiz esq esq dir SIM
-raiz dir dir esq dir esq esq esq dir dir dir esq NAO
-raiz dir dir esq dir esq dir esq SIM
-raiz dir esq dir dir dir NAO
-raiz dir dir esq dir esq esq dir esq NAO
-raiz dir dir esq dir esq esq dir esq NAO
-raiz dir dir esq dir esq esq dir esq NAO
-raiz dir esq esq NAO
-raiz dir dir esq dir esq dir esq dir dir esq esq NAO
-raiz dir dir esq dir esq dir esq dir dir esq esq NAO
-raiz esq dir dir esq dir esq dir NAO
-raiz esq dir dir esq dir esq dir NAO
-raiz esq dir dir dir dir NAO
-raiz esq dir dir esq dir esq dir NAO
-raiz esq dir dir esq dir esq dir NAO
-raiz dir esq dir dir esq dir esq NAO
-raiz esq dir dir dir esq esq dir NAO
-raiz dir dir esq dir esq SIM
-raiz dir dir esq dir esq esq esq dir dir esq esq esq NAO
-raiz dir dir esq dir esq esq esq dir dir esq dir NAO
-raiz SIM
-raiz dir dir esq dir esq esq esq dir dir esq dir NAO
-raiz esq dir dir esq dir esq dir NAO
-raiz esq dir dir esq dir esq dir NAO
-raiz dir dir esq dir dir esq dir SIM
-raiz dir dir esq dir dir dir esq NAO
-raiz dir esq dir esq dir NAO
-raiz dir dir esq dir esq dir SIM
-raiz esq dir dir esq dir esq dir NAO
-raiz esq esq dir esq esq NAO
-raiz dir dir esq dir esq dir esq dir dir dir NAO
-raiz esq esq esq dir esq NAO
-raiz esq dir dir SIM
-raiz esq dir dir esq esq esq NAO
-raiz dir dir esq dir esq dir esq dir SIM
-raiz dir dir esq dir esq esq esq dir dir esq esq dir NAO
-raiz esq esq esq dir dir NAO
-raiz dir esq dir dir esq dir SIM
-raiz dir dir esq dir esq dir esq dir dir esq esq NAO
-raiz esq dir dir dir esq dir dir NAO
-raiz dir esq dir dir esq dir dir NAO
-raiz esq dir dir esq esq esq NAO
-raiz esq dir dir esq dir esq dir NAO
-raiz esq dir dir esq dir esq dir NAO
-raiz dir dir esq dir dir esq dir dir NAO
-raiz dir esq dir dir esq dir esq NAO
-raiz dir esq dir esq dir NAO
-raiz esq dir dir esq dir esq dir NAO
-raiz dir dir esq dir esq esq esq dir dir esq esq dir NAO
-raiz dir esq dir dir esq dir esq NAO
-raiz dir dir esq dir esq dir esq esq dir SIM
-raiz esq esq dir esq esq NAO
-raiz dir dir esq dir esq esq esq dir dir esq esq esq NAO
-raiz esq dir dir dir esq dir esq NAO
-raiz esq esq dir dir NAO
-raiz dir esq dir dir esq esq NAO
-raiz esq dir dir esq dir esq dir NAO
+raiz esq esq dir dir dir NAO
+raiz dir esq esq dir esq esq NAO
+raiz dir dir esq esq dir NAO
+raiz dir dir dir dir esq dir dir NAO
+raiz esq esq esq dir SIM
+raiz dir esq dir dir dir esq NAO
 raiz dir dir SIM
-raiz dir dir esq dir esq dir dir esq NAO
+raiz dir esq esq dir dir dir NAO
+raiz dir dir esq esq esq NAO
+raiz dir dir esq esq esq NAO
+raiz dir dir esq esq esq NAO
+raiz dir esq esq esq esq NAO
+raiz dir dir dir esq esq esq dir NAO
+raiz dir dir dir esq esq esq dir NAO
+raiz esq dir esq esq dir NAO
+raiz esq dir esq esq dir NAO
 raiz esq dir dir dir dir NAO
-raiz dir esq esq NAO
-raiz dir dir esq dir esq esq esq dir esq NAO
-raiz dir dir esq dir esq esq esq esq NAO
-raiz dir dir esq dir dir esq dir dir NAO
-raiz esq dir dir esq esq dir NAO
-raiz dir dir esq dir esq esq dir SIM
-raiz dir dir esq dir esq dir esq dir dir esq esq NAO
-raiz dir dir esq dir esq dir esq dir dir dir NAO
-raiz dir dir esq dir esq esq dir dir NAO
-raiz esq esq dir esq dir NAO
-raiz esq dir dir esq dir esq dir NAO
-raiz esq dir dir esq esq esq NAO
+raiz esq dir esq esq dir NAO
+raiz esq dir esq esq dir NAO
+raiz dir esq esq dir esq dir NAO
+raiz esq dir dir esq dir NAO
+raiz dir dir esq SIM
+raiz dir esq dir esq dir dir esq NAO
+raiz dir esq dir dir esq NAO
+raiz SIM
+raiz dir esq dir dir esq NAO
+raiz esq dir esq esq dir NAO
+raiz esq dir esq esq dir NAO
+raiz dir dir dir dir esq dir SIM
+raiz dir dir dir dir dir esq esq NAO
+raiz dir esq esq esq dir dir NAO
+raiz dir dir dir esq SIM
+raiz esq dir esq esq dir NAO
+raiz esq esq esq esq dir dir NAO
+raiz dir dir dir esq esq dir dir NAO
+raiz esq esq esq esq esq dir NAO
+raiz esq dir SIM
+raiz esq esq dir dir esq NAO
+raiz dir dir dir esq esq esq SIM
+raiz dir esq dir esq dir dir dir NAO
+raiz esq esq esq esq dir esq NAO
+raiz dir esq esq dir SIM
+raiz dir dir dir esq esq esq dir NAO
+raiz esq dir dir dir esq dir NAO
+raiz dir esq esq dir dir esq NAO
+raiz esq esq dir dir esq NAO
+raiz esq dir esq esq dir NAO
+raiz esq dir esq esq dir NAO
+raiz dir dir dir dir esq dir dir NAO
+raiz dir esq esq dir esq dir NAO
+raiz dir esq esq esq dir dir NAO
+raiz esq dir esq esq dir NAO
+raiz dir esq dir esq dir dir dir NAO
+raiz dir esq esq dir esq dir NAO
+raiz dir dir esq dir dir SIM
+raiz esq esq esq esq dir dir NAO
+raiz dir esq dir esq dir dir esq NAO
+raiz esq dir dir dir esq esq NAO
+raiz esq esq esq dir dir NAO
+raiz dir esq esq dir esq esq NAO
+raiz esq dir esq esq dir NAO
+raiz dir dir dir dir dir SIM
+raiz dir dir dir esq dir esq NAO
 raiz esq dir dir dir dir NAO
-raiz dir dir esq dir esq esq dir esq NAO
-raiz dir dir esq dir esq dir esq dir dir esq dir NAO
-raiz esq dir dir esq dir esq dir NAO
+raiz dir esq esq esq esq NAO
+raiz dir esq dir esq dir esq NAO
+raiz dir esq dir esq esq dir NAO
+raiz dir dir dir dir esq dir dir NAO
+raiz esq esq dir dir dir NAO
+raiz dir dir esq esq SIM
+raiz dir dir dir esq esq esq dir NAO
+raiz dir dir dir esq esq dir dir NAO
+raiz dir dir esq esq dir NAO
+raiz esq esq esq dir esq NAO
+raiz esq dir esq esq dir NAO
+raiz esq esq dir dir esq NAO
+raiz esq dir dir dir dir NAO
+raiz dir dir esq esq esq NAO
+raiz dir dir dir esq esq dir esq NAO
+raiz esq dir esq esq dir NAO
 [55168 ## BMW ## 228i Gran Coupe ## 2021 ## Compact Cars ## [Gasoline] ## 4 ## 2.0 ## Automatic ## Front-Wheel Drive ## 10.20 ## 14.03 ## 197.2 ## true ## 16/10/2020]
 [47680 ## BMW ## 230i Coupe ## 2021 ## Subcompact Cars ## [Gasoline] ## 4 ## 2.0 ## Manual ## Rear-Wheel Drive ## 8.93 ## 13.60 ## 220.9 ## true ## 31/07/2020]
 [54893 ## Nissan ## 370Z ## 2012 ## Two Seaters ## [Gasoline] ## 6 ## 3.7 ## Manual ## Rear-Wheel Drive ## 7.65 ## 11.05 ## 263.0 ## false ## 24/09/2011]
